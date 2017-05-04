@@ -190,7 +190,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li></ul>
                     </div>
                 </section>
                 
@@ -365,17 +365,18 @@
 
     
         <section class="youyan" id="comments">
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
     <script>
-        var loadComment = function(){
-            var d = document, s = d.createElement('script');
-            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2132672';
-            (d.head || d.body).appendChild(s);
-        }
+        var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "29e2119fe8254548aa9bf34b9f7001a9",
+        target: "cloud-tie-wrapper"
+        };
+        var yunManualLoad = true;
+        Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
     </script>
-    
-    <script> loadComment(); </script>
-
-    <div id="uyan_frame"></div>
 </section>
     
 

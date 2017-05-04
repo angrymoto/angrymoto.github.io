@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://angrymoto.me/"/>
-  <updated>2017-05-04T07:08:19.362Z</updated>
+  <updated>2017-05-04T09:18:12.512Z</updated>
   <id>http://angrymoto.me/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Test</title>
+    <link href="http://angrymoto.me/2017/05/04/Test/"/>
+    <id>http://angrymoto.me/2017/05/04/Test/</id>
+    <published>2017-05-04T09:17:22.000Z</published>
+    <updated>2017-05-04T09:18:12.512Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="这是一个测试"><a href="#这是一个测试" class="headerlink" title="这是一个测试"></a>这是一个测试</h2><h3 id="看看能评论吗？"><a href="#看看能评论吗？" class="headerlink" title="看看能评论吗？"></a>看看能评论吗？</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;这是一个测试&quot;&gt;&lt;a href=&quot;#这是一个测试&quot; class=&quot;headerlink&quot; title=&quot;这是一个测试&quot;&gt;&lt;/a&gt;这是一个测试&lt;/h2&gt;&lt;h3 id=&quot;看看能评论吗？&quot;&gt;&lt;a href=&quot;#看看能评论吗？&quot; class=&quot;headerlink&quot; ti
+    
+    </summary>
+    
+    
+      <category term="test" scheme="http://angrymoto.me/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
