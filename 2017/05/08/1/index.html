@@ -15,15 +15,21 @@
 
 
 
-<meta name="description" content="于无声处听惊雷">
-<meta property="og:type" content="website">
+<meta name="description" content="从jquery转型 （一）[TOC] 背景 很多很多传统的Web开发者还在用着传统的jquery和ES5，大家都知道现在的前端如火如荼，但是眼花缭乱的框架和层出不穷的新概念，让很多人无从下手，本文从0开始，带你一步步由jquery操作DOM转型成为一个新思想的前端开发者。没有过多的引申和概念解释。先上手实践，再回头体会。让我们开始。（本系列默认认为学习者有使用搜索引擎学习概念和解决问题的能力）">
+<meta name="keywords">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Jo's blog">
-<meta property="og:url" content="http://angrymoto.me/archives/2017/05/index.html">
+<meta property="og:url" content="http://angrymoto.me/2017/05/08/1/index.html">
 <meta property="og:site_name" content="Jo's blog">
-<meta property="og:description" content="于无声处听惊雷">
+<meta property="og:description" content="从jquery转型 （一）[TOC] 背景 很多很多传统的Web开发者还在用着传统的jquery和ES5，大家都知道现在的前端如火如荼，但是眼花缭乱的框架和层出不穷的新概念，让很多人无从下手，本文从0开始，带你一步步由jquery操作DOM转型成为一个新思想的前端开发者。没有过多的引申和概念解释。先上手实践，再回头体会。让我们开始。（本系列默认认为学习者有使用搜索引擎学习概念和解决问题的能力）">
+<meta property="og:image" content="http://angrymoto.me/2017/05/08/1/_image/2017-05-08-10-48-35.jpg">
+<meta property="og:image" content="http://angrymoto.me/2017/05/08/1/_image/2017-05-08-10-56-18.jpg">
+<meta property="og:image" content="http://angrymoto.me/2017/05/08/1/_image/2017-05-08-11-08-13.jpg">
+<meta property="og:updated_time" content="2017-05-08T03:44:44.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jo's blog">
-<meta name="twitter:description" content="于无声处听惊雷">
+<meta name="twitter:description" content="从jquery转型 （一）[TOC] 背景 很多很多传统的Web开发者还在用着传统的jquery和ES5，大家都知道现在的前端如火如荼，但是眼花缭乱的框架和层出不穷的新概念，让很多人无从下手，本文从0开始，带你一步步由jquery操作DOM转型成为一个新思想的前端开发者。没有过多的引申和概念解释。先上手实践，再回头体会。让我们开始。（本系列默认认为学习者有使用搜索引擎学习概念和解决问题的能力）">
+<meta name="twitter:image" content="http://angrymoto.me/2017/05/08/1/_image/2017-05-08-10-48-35.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2017/5 | Jo&#39;s blog</title>
+<title>Jo&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,8 +71,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -266,102 +272,214 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-1" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2017/05/08/1/" class="article-date">
+      <time datetime="2017-05-08T03:42:35.891Z" itemprop="datePublished">2017-05-08</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+    <div class="article-entry" itemprop="articleBody">
       
+          
+        <h2 id="从jquery转型-（一）"><a href="#从jquery转型-（一）" class="headerlink" title="从jquery转型 （一）"></a>从jquery转型 （一）</h2><p>[TOC]</p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><blockquote>
+<p>很多很多传统的Web开发者还在用着传统的jquery和ES5，大家都知道现在的前端如火如荼，但是眼花缭乱的框架和层出不穷的新概念，让很多人无从下手，本文从0开始，带你一步步由jquery操作DOM转型成为一个新思想的前端开发者。没有过多的引申和概念解释。先上手实践，再回头体会。让我们开始。<font color="orange">（本系列默认认为学习者有使用搜索引擎学习概念和解决问题的能力）</font></p>
+</blockquote>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><blockquote>
+<p>使用Typescript+Webpack+jquery开发，一个简单列表，一个按钮，点击按钮，在列表里增加一条新记录，记录的后面显示本记录创建的时间，起初我们先使用jquey, 然后我们再放弃它。再放弃它之前，我们先学会怎么在Typescript里使用jquery。</p>
+</blockquote>
+<ul>
+<li><p>框架/库/工具：</p>
+<ol>
+<li>Typescript（如果你懂C#或者Java，这个用起来会很简单。)</li>
+<li>Webpack （最主流热门的打包工具，React/Angular/Vue都在用它）</li>
+<li>jquery </li>
+<li>moment （日期时间的库，非常好用）</li>
+<li>Visual Studio Code </li>
+<li>ConsoleZ (Win下很好用的一款命令行工具)</li>
+</ol>
+</li>
+<li><p>开始</p>
+<ol>
+<li>首先，你要安装过NodeJS，如果没有，先去安装，因为我们需要使用NPM来安装管理依赖，直接去<a href="https://nodejs.org" target="_blank" rel="external">官网</a>下载安装就可以。</li>
+<li>安装完NodeJS之后，因为网络原因，有时候NPM会非常慢，替换为<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的NPM镜像</a></li>
+<li>打开VSCode，找个你喜欢的位置，创建一个文件夹，然后新建一个index.html<br><img src="_image/2017-05-08-10-48-35.jpg" alt=""><br> ￼</li>
+<li>写入一个基本的html页面结构，新建两个文件夹，src和dist，我们的typescript文件会放在src里，编译后的js文件在dist里。<br><img src="_image/2017-05-08-10-56-18.jpg" alt=""><br> ￼</li>
+<li><p>打开你的命令行工具，cmd，powershell或者git bash。这里我使用的是ConsoleZ，如果喜欢的话，可以在<a href="https://github.com/cbucher/console" target="_blank" rel="external">这里</a>找到怎么安装使用。在此工作目录下，使用</p>
+<p> <code>npm init</code></p>
+<p> 然后一路输入，初始化一个package.json，这个文件就是你前端工程化的一个配置文件。<br>￼<br><img src="_image/2017-05-08-11-08-13.jpg" alt=""></p>
+</li>
+<li><p>现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以加上-dev</p>
+<p> <code>npm install typescript webpack --save-dev</code></p>
+</li>
+<li><p>安装jquery，这次是要使用在正式环境里的，所以不需要加上-dev，(这里我们使用了npm来引入jquery，不在使用在页面上使用&lt; script&gt;标签来引入的方式)</p>
+<p> <code>npm install jquery --save</code></p>
+</li>
+<li><p>因为我们是在typescript里使用jquery，所以我们需要添加jquery的@types，为了能让typescript使用它的类型</p>
+<p> <code>npm install @types/jquery --save</code></p>
+</li>
+<li>在根目录下添加tsconfig.json文件，这个文件是用来配置typescript的<br> ```{<pre><code>&quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;./dist/&quot;,
+    &quot;sourceMap&quot;: true,
+    &quot;noImplicitAny&quot;: false,
+    &quot;module&quot;: &quot;commonjs&quot;,
+    &quot;target&quot;: &quot;es5&quot;,
+    &quot;allowJs&quot;: true
+},
+&quot;include&quot;: [
+    &quot;./src/*&quot;
+],
+&quot;exclude&quot;: [
+    &quot;node_modules&quot;
+]
+</code></pre> }</li>
+</ol>
+</li>
+</ul>
+<pre><code>7.     6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里
+6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里
+7.     6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里
+</code></pre>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
+    </div>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/05/08/1/" class="archive-article-date">
-      <time datetime="2017-05-08T03:42:35.891Z" itemprop="datePublished">05-08</time>
-</a>
-
-
-        </div>
-         
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/05/08/giveupjquery1/" class="archive-article-date">
-      <time datetime="2017-05-08T02:36:22.827Z" itemprop="datePublished">05-08</time>
-</a>
-
-
-        </div>
-         
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/05/04/Test/" class="archive-article-date">
-      <time datetime="2017-05-04T09:17:22.000Z" itemprop="datePublished">05-04</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/04/Test/">Test</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/05/08/1/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Jo</a></p>
+        <p><span>发布时间:</span>2017-05-08, 11:42:35</p>
+        <p><span>最后更新:</span>2017-05-08, 11:44:44</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/08/1/" title="">http://angrymoto.me/2017/05/08/1/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://angrymoto.me/2017/05/08/1/　　作者: Jo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/05/08/giveupjquery1/">
+                    
+                </a>
+            </div>
+        
+        
+    </nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#从jquery转型-（一）"><span class="toc-number">1.</span> <span class="toc-text">从jquery转型 （一）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目标"><span class="toc-number">1.2.</span> <span class="toc-text">目标</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
 
     
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| Jo's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
 
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    <script>
+        var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "29e2119fe8254548aa9bf34b9f7001a9",
+        target: "cloud-tie-wrapper"
+        };
+        var yunManualLoad = true;
+        Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/05/08/giveupjquery1/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/1/">1</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/giveupjquery1/">giveupjquery1</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/04/Test/">Test</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/19/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
