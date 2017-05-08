@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://angrymoto.me/"/>
-  <updated>2017-05-08T03:44:44.389Z</updated>
+  <updated>2017-05-08T05:56:11.035Z</updated>
   <id>http://angrymoto.me/</id>
   
   <author>
@@ -16,15 +16,14 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://angrymoto.me/2017/05/08/1/"/>
-    <id>http://angrymoto.me/2017/05/08/1/</id>
-    <published>2017-05-08T03:42:35.891Z</published>
-    <updated>2017-05-08T03:44:44.389Z</updated>
+    <title>giveupjquery-1</title>
+    <link href="http://angrymoto.me/2017/05/08/giveupjquery-1/"/>
+    <id>http://angrymoto.me/2017/05/08/giveupjquery-1/</id>
+    <published>2017-05-08T05:53:20.000Z</published>
+    <updated>2017-05-08T05:56:11.035Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="从jquery转型-（一）"><a href="#从jquery转型-（一）" class="headerlink" title="从jquery转型 （一）"></a>从jquery转型 （一）</h2><p>[TOC]</p>
-<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><blockquote>
-<p>很多很多传统的Web开发者还在用着传统的jquery和ES5，大家都知道现在的前端如火如荼，但是眼花缭乱的框架和层出不穷的新概念，让很多人无从下手，本文从0开始，带你一步步由jquery操作DOM转型成为一个新思想的前端开发者。没有过多的引申和概念解释。先上手实践，再回头体会。让我们开始。<font color="orange">（本系列默认认为学习者有使用搜索引擎学习概念和解决问题的能力）</font></p>
+    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><blockquote>
+<p>很多很多传统的Web开发者还在用着传统的jquery和ES5，大家都知道现在的前端如火如荼，但是眼花缭乱的框架和层出不穷的新概念，让很多人无从下手，本文从0开始，带你一步步由jquery操作DOM转型成为一个新思想的前端开发者。没有过多的引申和概念解释。先上手实践，再回头体会。让我们开始。（本系列默认认为学习者有使用搜索引擎学习概念和解决问题的能力）</p>
 </blockquote>
 <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><blockquote>
 <p>使用Typescript+Webpack+jquery开发，一个简单列表，一个按钮，点击按钮，在列表里增加一条新记录，记录的后面显示本记录创建的时间，起初我们先使用jquey, 然后我们再放弃它。再放弃它之前，我们先学会怎么在Typescript里使用jquery。</p>
@@ -35,7 +34,6 @@
 <li>Typescript（如果你懂C#或者Java，这个用起来会很简单。)</li>
 <li>Webpack （最主流热门的打包工具，React/Angular/Vue都在用它）</li>
 <li>jquery </li>
-<li>moment （日期时间的库，非常好用）</li>
 <li>Visual Studio Code </li>
 <li>ConsoleZ (Win下很好用的一款命令行工具)</li>
 </ol>
@@ -44,203 +42,56 @@
 <ol>
 <li>首先，你要安装过NodeJS，如果没有，先去安装，因为我们需要使用NPM来安装管理依赖，直接去<a href="https://nodejs.org" target="_blank" rel="external">官网</a>下载安装就可以。</li>
 <li>安装完NodeJS之后，因为网络原因，有时候NPM会非常慢，替换为<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的NPM镜像</a></li>
-<li>打开VSCode，找个你喜欢的位置，创建一个文件夹，然后新建一个index.html<br><img src="_image/2017-05-08-10-48-35.jpg" alt=""><br> ￼</li>
-<li>写入一个基本的html页面结构，新建两个文件夹，src和dist，我们的typescript文件会放在src里，编译后的js文件在dist里。<br><img src="_image/2017-05-08-10-56-18.jpg" alt=""><br> ￼</li>
+<li><p>打开VSCode，找个你喜欢的位置，创建一个文件夹，然后新建一个index.html<br><img src="http://upload-images.jianshu.io/upload_images/1076822-d5e8687e6167d972.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p> ￼</p>
+</li>
+<li>写入一个基本的html页面结构，新建两个文件夹，src和dist，我们的typescript文件会放在src里，编译后的js文件在dist里。<br> <img src="http://upload-images.jianshu.io/upload_images/1076822-2a5d6baa0d57a877.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2017-05-08-10-56-18.jpg"><br> ￼</li>
 <li><p>打开你的命令行工具，cmd，powershell或者git bash。这里我使用的是ConsoleZ，如果喜欢的话，可以在<a href="https://github.com/cbucher/console" target="_blank" rel="external">这里</a>找到怎么安装使用。在此工作目录下，使用</p>
 <p> <code>npm init</code></p>
-<p> 然后一路输入，初始化一个package.json，这个文件就是你前端工程化的一个配置文件。<br>￼<br><img src="_image/2017-05-08-11-08-13.jpg" alt=""></p>
+<p> 然后一路输入，初始化一个package.json，这个文件就是你前端工程化的一个配置文件。<br><img src="http://upload-images.jianshu.io/upload_images/1076822-9f3488383a6caa10.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2017-05-08-11-08-13.jpg"></p>
 </li>
-<li><p>现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以加上-dev</p>
-<p> <code>npm install typescript webpack --save-dev</code></p>
+<li><p>现在来使用npm安装开发要使用的依赖，typescript，webpack，为了让webpack可以装载typescript，还要安装两个loader：awesome-typescript-loader，source-map-loader。因为这些都只是开发阶段要用的工具，并不是最终代码要使用的库，所以加上-dev<br> <code>npm install typescript webpack awesome-typescript-loader source-map-loader  --save-dev</code></p>
 </li>
-<li><p>安装jquery，这次是要使用在正式环境里的，所以不需要加上-dev，(这里我们使用了npm来引入jquery，不在使用在页面上使用&lt; script&gt;标签来引入的方式)</p>
-<p> <code>npm install jquery --save</code></p>
+<li>安装jquery，这次是要使用在正式环境里的，所以不需要加上-dev，(这里我们使用了npm来引入jquery，不在使用在页面上使用&lt; script&gt;标签来引入的方式)<br> <code>npm install jquery --save</code></li>
+<li>因为我们是在typescript里使用jquery，所以我们需要添加jquery的@types，为了能让typescript使用它的类型<br> <code>npm install @types/jquery --save</code></li>
+<li><p>在根目录下添加tsconfig.json文件，这个文件是用来配置typescript的，我们可以看到，是把src目录下的所有文件编译到dist目录下，编译成es5</p>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">            <span class="attr">"compilerOptions"</span>: &#123;</div><div class="line">                <span class="attr">"outDir"</span>: <span class="string">"./dist/"</span>,</div><div class="line">                <span class="attr">"sourceMap"</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">"noImplicitAny"</span>: <span class="literal">false</span>,</div><div class="line">                <span class="attr">"module"</span>: <span class="string">"commonjs"</span>,</div><div class="line">                <span class="attr">"target"</span>: <span class="string">"es5"</span>,</div><div class="line">                <span class="attr">"allowJs"</span>: <span class="literal">true</span></div><div class="line">            &#125;,</div><div class="line">            <span class="attr">"include"</span>: [</div><div class="line">                <span class="string">"./src/*"</span></div><div class="line">            ],</div><div class="line">            <span class="attr">"exclude"</span>: [</div><div class="line">                <span class="string">"node_modules"</span></div><div class="line">            ]</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>因为我们是在typescript里使用jquery，所以我们需要添加jquery的@types，为了能让typescript使用它的类型</p>
-<p> <code>npm install @types/jquery --save</code></p>
+<li><p>接下来配置webpack，让webpack来打包typescript文件，在根目录下添加webpack.config.js，配置typescirpt loader。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">        <span class="attr">entry</span>: <span class="string">"./src/app.ts"</span>,</div><div class="line">        <span class="attr">output</span>: &#123;</div><div class="line">            <span class="attr">filename</span>: <span class="string">"app.js"</span>,</div><div class="line">            <span class="attr">path</span>: __dirname + <span class="string">"/dist"</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">devtool</span>: <span class="string">"source-map"</span>,</div><div class="line"></div><div class="line">        <span class="attr">resolve</span>: &#123;</div><div class="line">            <span class="attr">extensions</span>: [<span class="string">".webpack.js"</span>, <span class="string">".web.js"</span>, <span class="string">".ts"</span>, <span class="string">".tsx"</span>, <span class="string">".js"</span>]</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">module</span>: &#123;</div><div class="line">            <span class="attr">rules</span>: [</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</div><div class="line">                    <span class="attr">enforce</span>: <span class="string">"pre"</span>,</div><div class="line">                    <span class="attr">loader</span>: <span class="string">"source-map-loader"</span></div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">enforce</span>: <span class="string">'pre'</span>,</div><div class="line">                    <span class="attr">test</span>: <span class="regexp">/\.tsx?$/</span>,</div><div class="line">                    <span class="attr">use</span>: <span class="string">"source-map-loader"</span></div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">test</span>: <span class="regexp">/\.tsx?$/</span>,</div><div class="line">                    <span class="attr">loader</span>: <span class="string">'awesome-typescript-loader'</span>,</div><div class="line">                    <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span></div><div class="line">                &#125;,</div><div class="line">            ]</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">externals</span>: &#123;&#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li>在根目录下添加tsconfig.json文件，这个文件是用来配置typescript的<br> ```{<pre><code>&quot;compilerOptions&quot;: {
-    &quot;outDir&quot;: &quot;./dist/&quot;,
-    &quot;sourceMap&quot;: true,
-    &quot;noImplicitAny&quot;: false,
-    &quot;module&quot;: &quot;commonjs&quot;,
-    &quot;target&quot;: &quot;es5&quot;,
-    &quot;allowJs&quot;: true
-},
-&quot;include&quot;: [
-    &quot;./src/*&quot;
-],
-&quot;exclude&quot;: [
-    &quot;node_modules&quot;
-]
-</code></pre> }</li>
-</ol>
+<li><p>好了，让我们来写一些代码。在app.ts里，写一个App类，然后使用它</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">import * as $ from &quot;jquery&quot;;</div><div class="line">export class App &#123;</div><div class="line">            public addComment():void &#123;</div><div class="line">                let creatAt = new Date();</div><div class="line">                $(&quot;#main&quot;).append(&quot;&lt;div&gt;&lt;span&gt;new comment pushed at.&quot;+creatAt.toTimeString()+&quot;&lt;/span&gt;&quot;);</div><div class="line">            &#125;</div><div class="line">&#125;</div><div class="line">let app = new App();</div><div class="line">//jquery $()</div><div class="line">$(()=&gt;&#123;</div><div class="line">            $(&quot;#btn-add&quot;).click(app.addComment);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
-</ul>
-<pre><code>7.     6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里
-6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里
-7.     6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;从jquery转型-（一）&quot;&gt;&lt;a href=&quot;#从jquery转型-（一）&quot; class=&quot;headerlink&quot; title=&quot;从jquery转型 （一）&quot;&gt;&lt;/a&gt;从jquery转型 （一）&lt;/h2&gt;&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h3 id=&quot;背景&quot;&gt;&lt;a h
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://angrymoto.me/2017/05/08/giveupjquery1/"/>
-    <id>http://angrymoto.me/2017/05/08/giveupjquery1/</id>
-    <published>2017-05-08T02:36:22.827Z</published>
-    <updated>2017-05-08T03:41:59.322Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="从jquery转型-（一）"><a href="#从jquery转型-（一）" class="headerlink" title="从jquery转型 （一）"></a>从jquery转型 （一）</h2><p>[TOC]</p>
-<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><blockquote>
-<p>很多很多传统的Web开发者还在用着传统的jquery和ES5，大家都知道现在的前端如火如荼，但是眼花缭乱的框架和层出不穷的新概念，让很多人无从下手，本文从0开始，带你一步步由jquery操作DOM转型成为一个新思想的前端开发者。没有过多的引申和概念解释。先上手实践，再回头体会。让我们开始。<font color="orange">（本系列默认认为学习者有使用搜索引擎学习概念和解决问题的能力）</font></p>
-</blockquote>
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><blockquote>
-<p>使用Typescript+Webpack+jquery开发，一个简单列表，一个按钮，点击按钮，在列表里增加一条新记录，记录的后面显示本记录创建的时间，起初我们先使用jquey, 然后我们再放弃它。再放弃它之前，我们先学会怎么在Typescript里使用jquery。</p>
-</blockquote>
-<ul>
-<li><p>框架/库/工具：</p>
-<ol>
-<li>Typescript（如果你懂C#或者Java，这个用起来会很简单。)</li>
-<li>Webpack （最主流热门的打包工具，React/Angular/Vue都在用它）</li>
-<li>jquery </li>
-<li>moment （日期时间的库，非常好用）</li>
-<li>Visual Studio Code </li>
-<li>ConsoleZ (Win下很好用的一款命令行工具)</li>
-</ol>
+<li><p>现在可以编译了，如果我们没有使用webpack，我们需要使用tsc命令来编译typescript，现在我们使用了webpack，直接在命令行输入webpack就可以了<br><code>webpack</code><br>注意，如果提示没有webpack命令，安装webpack到全局<br><code>npm install webpack -g</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1076822-2640c08d1e54a9b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
 </li>
-<li><p>开始</p>
-<ol>
-<li>首先，你要安装过NodeJS，如果没有，先去安装，因为我们需要使用NPM来安装管理依赖，直接去<a href="https://nodejs.org" target="_blank" rel="external">官网</a>下载安装就可以。</li>
-<li>安装完NodeJS之后，因为网络原因，有时候NPM会非常慢，替换为<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的NPM镜像</a></li>
-<li><p>打开VSCode，找个你喜欢的位置，创建一个文件夹，然后新建一个index.html</p>
-<pre><code>4. 写入一个基本的html页面结构，新建两个文件夹，src和dist，我们的typescript文件会放在src里，编译后的js文件在dist里。
-</code></pre><p> <img src="./_image/2017-05-08-10-56-18.jpg" alt=""></p>
+<li><p>编译完成后，我们可以看到dist文件夹已经出现了app.js和app.js.map，map文件是用来调试时做关联的。现在改动一下index.html，引用这个app.js</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1076822-97c0fca080d8cf36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
 </li>
-<li>打开你的命令行工具，cmd，powershell或者git bash。这里我使用的是ConsoleZ，如果喜欢的话，可以在<a href="https://github.com/cbucher/console" target="_blank" rel="external">这里</a>找到怎么安装使用。在此工作目录下，使用<blockquote>
-<p>npm init<br> 然后一路输入，初始化一个package.json，这个文件就是你前端工程化的一个配置文件。<br><img src="./_image/2017-05-08-11-08-13.jpg" alt="">## 从jquery转型 （一）</p>
+<li><p>现在可以打开index.html来看看，每当我们点击按钮，就会添加一条评论。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1076822-9cb572fd25549f4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"> </p>
+</li>
+<li><p>现在我们的jquery已经可以和typescript以及webpack一起使用了。但是这只是开始，我们知道了如何写一个简单的typescript类，如何引入jquery来使用，如何让它们配合使用，下一节，我们将引入下面的新东西</p>
+<blockquote>
+<p>1，目前我们的页面还是以一个本地文件的方式在浏览器里打开的，下一节我们要使用一个本地的简易web服务器来承载它，并且可以在有任何改动的时候自动刷新页面。<br>2，我们要使用整合的npm script命令（npm start）来一次完成编译，运行两个步骤。<br>3，我们要引入moment库，来给每一条评论后面显示一个发布后到现在的时间差信息，就像下面的图<br>4，我们要改造这个评论列表，使用React或Angualar创建一个Component</p>
 </blockquote>
 </li>
 </ol>
 </li>
 </ul>
-<p>[TOC]</p>
-<h3 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h3><blockquote>
-<p>很多很多传统的Web开发者还在用着传统的jquery和ES5，大家都知道现在的前端如火如荼，但是眼花缭乱的框架和层出不穷的新概念，让很多人无从下手，本文从0开始，带你一步步由jquery操作DOM转型成为一个新思想的前端开发者。没有过多的引申和概念解释。先上手实践，再回头体会。让我们开始。<fontcolor='orange'>（本系列默认认为学习者有使用搜索引擎学习概念和解决问题的能力）</fontcolor='orange'></p>
-</blockquote>
-<h3 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h3><blockquote>
-<p>使用Typescript+Webpack+jquery开发，一个简单列表，一个按钮，点击按钮，在列表里增加一条新记录，记录的后面显示本记录创建的时间，起初我们先使用jquey, 然后我们再放弃它。再放弃它之前，我们先学会怎么在Typescript里使用jquery。</p>
-</blockquote>
-<ul>
-<li>框架/库/工具：</li>
-</ul>
-<ol>
-<li><p>Typescript（如果你懂C#或者Java，这个用起来会很简单。)</p>
-</li>
-<li><p>Webpack （最主流热门的打包工具，React/Angular/Vue都在用它）</p>
-</li>
-<li><p>jquery </p>
-</li>
-<li><p>moment （日期时间的库，非常好用）</p>
-</li>
-<li><p>Visual Studio Code </p>
-</li>
-<li><p>ConsoleZ (Win下很好用的一款命令行工具)</p>
-</li>
-</ol>
-<ul>
-<li>开始</li>
-</ul>
-<ol>
-<li><p>首先，你要安装过NodeJS，如果没有，先去安装，因为我们需要使用NPM来安装管理依赖，直接去<a href="https://nodejs.org" target="_blank" rel="external">官网</a>下载安装就可以。</p>
-</li>
-<li><p>安装完NodeJS之后，因为网络原因，有时候NPM会非常慢，替换为<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的NPM镜像</a></p>
-</li>
-<li><p>打开VSCode，找个你喜欢的位置，创建一个文件夹，然后新建一个index.html</p>
-</li>
-</ol>
-<ol>
-<li>写入一个基本的html页面结构，新建两个文件夹，src和dist，我们的typescript文件会放在src里，编译后的js文件在dist里。</li>
-</ol>
-<ol>
-<li>打开你的命令行工具，cmd，powershell或者git bash。这里我使用的是ConsoleZ，如果喜欢的话，可以在<a href="https://github.com/cbucher/console" target="_blank" rel="external">这里</a>找到怎么安装使用。在此工作目录下，使用</li>
-</ol>
-<p><code>npm init</code></p>
-<p>然后一路输入，初始化一个package.json，这个文件就是你前端工程化的一个配置文件。</p>
-<ol>
-<li>现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以加上-dev</li>
-</ol>
-<figure class="highlight plain"><figcaption><span>install typescript webpack --save-dev```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">7. 安装jquery，这次是要使用在正式环境里的，所以不需要加上-dev，(这里我们使用了npm来引入jquery，不在使用在页面上使用&amp;lt;script&amp;gt;标签来引入的方式)</div><div class="line"></div><div class="line">`npm install jquery --save`</div><div class="line"></div><div class="line">8. 因为我们是在typescript里使用jquery，所以我们需要添加jquery的@types，为了能让typescript使用它的类型</div><div class="line"></div><div class="line">`npm install @types/jquery --save`</div><div class="line"></div><div class="line">9. 在根目录下添加tsconfig.json文件，这个文件是用来配置typescript的</div><div class="line"></div><div class="line">```&#123;</div><div class="line"></div><div class="line">&quot;compilerOptions&quot;: &#123;</div><div class="line"></div><div class="line">&quot;outDir&quot;: &quot;./dist/&quot;,</div><div class="line"></div><div class="line">&quot;sourceMap&quot;: true,</div><div class="line"></div><div class="line">&quot;noImplicitAny&quot;: false,</div><div class="line"></div><div class="line">&quot;module&quot;: &quot;commonjs&quot;,</div><div class="line"></div><div class="line">&quot;target&quot;: &quot;es5&quot;,</div><div class="line"></div><div class="line">&quot;allowJs&quot;: true</div><div class="line"></div><div class="line">&#125;,</div><div class="line"></div><div class="line">&quot;include&quot;: [</div><div class="line"></div><div class="line">&quot;./src/*&quot;</div><div class="line"></div><div class="line">],</div><div class="line"></div><div class="line">&quot;exclude&quot;: [</div><div class="line"></div><div class="line">&quot;node\_modules&quot;</div><div class="line"></div><div class="line">]</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">7. 6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里</div><div class="line"></div><div class="line">6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里</div><div class="line"></div><div class="line">7. 6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里</div><div class="line"></div><div class="line">    6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以加上-dev</div><div class="line">        `npm install typescript webpack --save-dev`</div><div class="line">    7. 安装jquery，这次是要使用在正式环境里的，所以不需要加上-dev，(这里我们使用了npm来引入jquery，不在使用在页面上使用&lt;script&gt;标签来引入的方式)</div><div class="line">        `npm install jquery --save`</div><div class="line">    8. 因为我们是在typescript里使用jquery，所以我们需要添加jquery的@types，为了能让typescript使用它的类型</div><div class="line">        `npm install @types/jquery --save`</div><div class="line">    9. 在根目录下添加tsconfig.json文件，这个文件是用来配置typescript的</div><div class="line">        ```&#123;</div><div class="line">            &quot;compilerOptions&quot;: &#123;</div><div class="line">                &quot;outDir&quot;: &quot;./dist/&quot;,</div><div class="line">                &quot;sourceMap&quot;: true,</div><div class="line">                &quot;noImplicitAny&quot;: false,</div><div class="line">                &quot;module&quot;: &quot;commonjs&quot;,</div><div class="line">                &quot;target&quot;: &quot;es5&quot;,</div><div class="line">                &quot;allowJs&quot;: true</div><div class="line">            &#125;,</div><div class="line">            &quot;include&quot;: [</div><div class="line">                &quot;./src/*&quot;</div><div class="line">            ],</div><div class="line">            &quot;exclude&quot;: [</div><div class="line">                &quot;node_modules&quot;</div><div class="line">            ]</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
-<pre><code>7.     6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里
-6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里
-7.     6. 现在来使用npm安装开发要使用的依赖，因为这两个只是开发阶段要用的工具，并不是最终代码要使用的库，所以save到dev里
-</code></pre>]]></content>
+<p><img src="http://upload-images.jianshu.io/upload_images/1076822-f671a8b0bc721648.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;从jquery转型-（一）&quot;&gt;&lt;a href=&quot;#从jquery转型-（一）&quot; class=&quot;headerlink&quot; title=&quot;从jquery转型 （一）&quot;&gt;&lt;/a&gt;从jquery转型 （一）&lt;/h2&gt;&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h3 id=&quot;背景&quot;&gt;&lt;a h
+      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;很多很多传统的Web开发者还在用着传统的jquery和ES5，大家都知道现在的前端如火如荼，但是眼花缭乱的框架和层
     
     </summary>
     
     
-  </entry>
-  
-  <entry>
-    <title>Test</title>
-    <link href="http://angrymoto.me/2017/05/04/Test/"/>
-    <id>http://angrymoto.me/2017/05/04/Test/</id>
-    <published>2017-05-04T09:17:22.000Z</published>
-    <updated>2017-05-04T09:18:12.512Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="这是一个测试"><a href="#这是一个测试" class="headerlink" title="这是一个测试"></a>这是一个测试</h2><h3 id="看看能评论吗？"><a href="#看看能评论吗？" class="headerlink" title="看看能评论吗？"></a>看看能评论吗？</h3>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;这是一个测试&quot;&gt;&lt;a href=&quot;#这是一个测试&quot; class=&quot;headerlink&quot; title=&quot;这是一个测试&quot;&gt;&lt;/a&gt;这是一个测试&lt;/h2&gt;&lt;h3 id=&quot;看看能评论吗？&quot;&gt;&lt;a href=&quot;#看看能评论吗？&quot; class=&quot;headerlink&quot; ti
-    
-    </summary>
-    
-    
-      <category term="test" scheme="http://angrymoto.me/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://angrymoto.me/2017/04/19/hello-world/"/>
-    <id>http://angrymoto.me/2017/04/19/hello-world/</id>
-    <published>2017-04-19T09:42:03.681Z</published>
-    <updated>2017-05-04T07:08:19.362Z</updated>
-    
-    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>TestTestTestTestTestTest<a id="more"></a></excerpt></p>
-<the rest="" of="" contents="" |="" 余下全文="">
-
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-</the>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;Excerpt in index | 首页摘要&gt;&lt;br&gt;TestTestTestTestTestTest
-    
-    </summary>
-    
+      <category term="javascript" scheme="http://angrymoto.me/tags/javascript/"/>
     
   </entry>
   
